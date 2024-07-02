@@ -29,15 +29,15 @@ jobs:
         uses: robinraju/release-downloader@v1.11
         with:
           repository: 'leotsarev/ResumeBuilder'
-          fileName: 'ResumeBuilder.0.0.8.linux-x64.tar.gz'
-          tag: '0.0.8'
+          fileName: 'ResumeBuilder.0.0.9.linux-x64.tar.gz'
+          tag: '0.0.9'
           extract: true
           
       - name: Compile resumes to html
         shell: bash
         run: |
           ./ResumeBuilder --help
-          ./ResumeBuilder --include-tags management tsarev-resume.md tsarev-leonid.html 
+          ./ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
           ./ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
 
       - name: create html file list
