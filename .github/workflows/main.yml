@@ -32,6 +32,11 @@ jobs:
           fileName: 'resume-builder.0.0.10.linux-x64.tar.gz '
           tag: '0.0.10'
           extract: true
+
+      - name: Compile resumes to html (docker)
+        uses: docker://leotsarev/resume-builder@latest
+        with:
+          args:  tsarev-resume.md tsarev-leonid.html --include-tags management
           
       - name: Compile resumes to html
         shell: bash
