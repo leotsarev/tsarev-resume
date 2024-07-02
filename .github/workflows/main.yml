@@ -32,11 +32,6 @@ jobs:
           fileName: 'ResumeBuilder.0.0.8.linux-x64.tar.gz'
           tag: '0.0.8'
           extract: true
-      
-      - name: Install pandoc
-        uses: pandoc/actions/setup@{main}
-        with:
-          version: 2.19
           
       - name: Compile resumes to html
         shell: bash
@@ -45,12 +40,12 @@ jobs:
           ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
 
       - name: HTML to PDF
-        uses: docker://pandoc/core:2.9
+        uses: docker://pandoc/core:2.19
         with:
           args:  tsarev-leonid.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid.pdf
 
       - name: HTML to PDF
-        uses: docker://pandoc/core:2.9
+        uses: docker://pandoc/core:2.19
         with:
           args: tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
        
