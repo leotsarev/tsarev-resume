@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Download ResumeBuilder
+        uses: robinraju/release-downloader@v1.11
+        with:
+          repo: 'leotsarev/ResumeBuilder'
+          fileName: 'ResumeBuilder.0.0.2.win-x64.zip'
+          tag: '0.0.4'
+          extract: true
+      
+      - name: Install pandoc
+        uses: pandoc/actions/setup@{main}
+        with:
+          version: 2.19
+          
+      - name: Compile resumes to html
+        shell: bash
+        run: |
+          ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
+          ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
+      
+      - name: HTML to PDF
+        shell: bash
+        run: |
+          pandoc tsarev-leonid.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid.pdf
+          pandoc tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
+       
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          path: | 
+            *.pdf
+            *.html
