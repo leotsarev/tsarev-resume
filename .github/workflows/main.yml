@@ -34,7 +34,7 @@ jobs:
           extract: true
 
       - name: Compile resumes to html (docker)
-        uses: docker://leotsarev/resumebuilder@latest
+        uses: docker://leotsarev/resumebuilder:latest
         with:
           args:  tsarev-resume.md tsarev-leonid.html --include-tags management
           
