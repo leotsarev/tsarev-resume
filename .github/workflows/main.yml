@@ -43,12 +43,16 @@ jobs:
         run: |
           ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
           ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
-      
+
       - name: HTML to PDF
-        shell: bash
-        run: |
-          pandoc tsarev-leonid.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid.pdf
-          pandoc tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
+        uses: docker://pandoc/core:2.9
+        with:
+          args:  tsarev-leonid.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid.pdf
+
+      - name: HTML to PDF
+        uses: docker://pandoc/core:2.9
+        with:
+          args: tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
        
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.3
