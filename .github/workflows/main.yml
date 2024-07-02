@@ -28,7 +28,7 @@ jobs:
       - name: Download ResumeBuilder
         uses: robinraju/release-downloader@v1.11
         with:
-          repo: 'leotsarev/ResumeBuilder'
+          repository: 'leotsarev/ResumeBuilder'
           fileName: 'ResumeBuilder.0.0.8.linux-x64.tar.gz'
           tag: '0.0.8'
           extract: true
@@ -39,6 +39,11 @@ jobs:
           ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
           ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
 
+      - name: create html file list
+        id: files_list
+        shell: bash
+        run: echo "files=$(printf '"%s" ' *.html)" > $GITHUB_OUTPUT
+          
       - name: HTML to PDF
         uses: docker://pandoc/core:2.19
         with:
