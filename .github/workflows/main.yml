@@ -37,9 +37,9 @@ jobs:
         shell: bash
         run: |
           ls
-          ./resume-builder --help
-          ./resume-builder tsarev-resume.md tsarev-leonid.html --include-tags management
-          ./resume-builder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
+          ./ResumeBuilder --help
+          ./ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
+          ./ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
 
       - name: create html file list
         id: files_list
