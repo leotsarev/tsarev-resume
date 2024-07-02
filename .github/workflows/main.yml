@@ -36,9 +36,8 @@ jobs:
       - name: Compile resumes to html
         shell: bash
         run: |
-          ls
-          ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
-          ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
+          ./ResumeBuilder tsarev-resume.md tsarev-leonid.html --include-tags management
+          ./ResumeBuilder tsarev-resume.md tsarev-leonid-tech.html --include-tags tech
 
       - name: create html file list
         id: files_list
