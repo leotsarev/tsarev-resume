@@ -29,8 +29,8 @@ jobs:
         uses: robinraju/release-downloader@v1.11
         with:
           repo: 'leotsarev/ResumeBuilder'
-          fileName: 'ResumeBuilder.0.0.2.win-x64.zip'
-          tag: '0.0.4'
+          fileName: 'ResumeBuilder.0.0.8.linux-x64.tar.gz'
+          tag: '0.0.8'
           extract: true
       
       - name: Install pandoc
