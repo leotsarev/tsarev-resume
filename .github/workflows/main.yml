@@ -36,7 +36,7 @@ jobs:
       - name: Compile resumes to html (docker)
         uses: docker://ghcr.io/leotsarev/resumebuilder:latest
         with:
-          args: --input tsarev-resume.md --outputе tsarev-leonid.html
+          args: --input tsarev-resume.md --output tsarev-leonid.html
           
       - name: Compile resumes to html
         shell: bash
