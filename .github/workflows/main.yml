@@ -25,20 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-   #   - name: Download ResumeBuilder
-    #    uses: robinraju/release-downloader@v1.11
-     #   with:
-      #    repository: 'leotsarev/ResumeBuilder'
-       #   fileName: 'resume-builder.0.0.11.linux-x64.tar.gz '
-       #   tag: '0.0.11'
-       #   extract: true
-
-      - name: Compile resumes to html (docker)
-        uses: docker://ghcr.io/leotsarev/resumebuilder:latest
-
+      - name: Download ResumeBuilder
+        uses: robinraju/release-downloader@v1.11
         with:
-          args: --input /github/workspace/tsarev-resume.md --output /github/workspace/tsarev-leonid.html
-          options: --user root
+          repository: 'leotsarev/ResumeBuilder'
+          fileName: 'resume-builder.0.0.11.linux-x64.tar.gz '
+          tag: '0.0.11'
+          extract: true
           
       - name: Compile resumes to html
         shell: bash
