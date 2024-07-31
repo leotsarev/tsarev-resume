@@ -38,8 +38,8 @@ jobs:
         run: |
           ls
           ./ResumeBuilder --help
-          ./ResumeBuilder --input tsarev-resume.md --output tsarev-leonid.html --include-tags management
-          ./ResumeBuilder --input tsarev-resume.md --output tsarev-leonid-tech.html --include-tags tech
+          ./ResumeBuilder --input tsarev-resume.md --output tsarev-leonid.html --include-tag management
+          ./ResumeBuilder --input tsarev-resume.md --output tsarev-leonid-tech.html --include-tag tech
 
       - name: create html file list
         id: files_list
