@@ -47,7 +47,7 @@ jobs:
         run: echo "files=$(printf '"%s" ' *.html)" > $GITHUB_OUTPUT
           
       - name: HTML to PDF
-        uses: docker://urnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
+        uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
         with:
           args:  tsarev-leonid.html tsarev-leonid.pdf
 
