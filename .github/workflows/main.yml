@@ -47,9 +47,9 @@ jobs:
         run: echo "files=$(printf '"%s" ' *.html)" > $GITHUB_OUTPUT
           
       - name: HTML to PDF
-        uses: docker://pandoc/core:2.19
+        uses: docker://urnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
         with:
-          args:  tsarev-leonid.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid.pdf
+          args:  tsarev-leonid.html tsarev-leonid.pdf
 
       - name: HTML to PDF
         uses: docker://pandoc/core:2.19
