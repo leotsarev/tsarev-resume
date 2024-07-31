@@ -47,14 +47,14 @@ jobs:
         run: echo "files=$(printf '"%s" ' *.html)" > $GITHUB_OUTPUT
           
       - name: HTML to PDF
-        uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
+        uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small --enable-local-file-access
         with:
           args:  tsarev-leonid.html tsarev-leonid.pdf
 
-      - name: HTML to PDF
-        uses: docker://pandoc/core:2.19
-        with:
-          args: tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
+#      - name: HTML to PDF
+#        uses: docker://pandoc/core:2.19
+#        with:
+#          args: tsarev-leonid-tech.html -f html -t pdf --pdf-engine wkhtmltopdf -s -o tsarev-leonid-tech.pdf
        
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.3
