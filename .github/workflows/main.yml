@@ -29,8 +29,8 @@ jobs:
         uses: robinraju/release-downloader@v1.11
         with:
           repository: 'leotsarev/ResumeBuilder'
-          fileName: 'ResumeBuilder.0.0.12.linux-x64.tar.gz '
-          tag: '0.0.12'
+          fileName: 'ResumeBuilder.0.0.13.linux-x64.tar.gz '
+          tag: '0.0.13'
           extract: true
           
       - name: Compile resumes to html
