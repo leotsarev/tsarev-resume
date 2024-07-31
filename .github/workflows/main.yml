@@ -47,9 +47,9 @@ jobs:
         run: echo "files=$(printf '"%s" ' *.html)" > $GITHUB_OUTPUT
           
       - name: HTML to PDF
-        uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small --enable-local-file-access
+        uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
         with:
-          args:  tsarev-leonid.html tsarev-leonid.pdf
+          args:  --enable-local-file-access tsarev-leonid.html tsarev-leonid.pdf
 
 #      - name: HTML to PDF
 #        uses: docker://pandoc/core:2.19
