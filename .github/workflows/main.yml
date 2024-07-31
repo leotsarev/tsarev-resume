@@ -42,12 +42,12 @@ jobs:
       - name: HTML to PDF management
         uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
         with:
-          args:  --enable-local-file-access tsarev-leonid.html tsarev-leonid.pdf
+          args:  --margin-top 0 --enable-local-file-access tsarev-leonid.html tsarev-leonid.pdf
 
       - name: HTML to PDF tech
         uses: docker://surnet/alpine-wkhtmltopdf:3.20.2-0.12.6-small
         with:
-          args:  --enable-local-file-access tsarev-leonid-tech.html tsarev-leonid-tech.pdf
+          args: --margin-top 0 --enable-local-file-access tsarev-leonid-tech.html tsarev-leonid-tech.pdf
        
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.3
